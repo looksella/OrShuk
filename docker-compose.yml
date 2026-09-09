@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: orshuk_dev
       POSTGRES_DB: orshuk_dev
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5433:5432"
     volumes:
       - orshuk_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -22,7 +22,7 @@ services:
     container_name: orshuk-pgadmin
     restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@orshuk.local
+      PGADMIN_DEFAULT_EMAIL: admin@orshuk.com
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
