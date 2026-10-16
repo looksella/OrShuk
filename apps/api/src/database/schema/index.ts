@@ -2,5 +2,5 @@
 export * from './tenants';
 export * from './branches';
 export * from './users';
-export * from './products';
 export * from './refresh-tokens';
+export * from './productos.schema';

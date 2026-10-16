@@ -1,6 +1,7 @@
 // apps/web/src/app/(app)/dashboard/page.tsx
 // Server Component: los datos se piden en el servidor con el token
 // de la cookie httpOnly. El navegador nunca ve el token.
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { LogOut, Store, User } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,7 +10,7 @@ import { getAccessToken } from '@/lib/auth-cookies';
 import { logoutAction } from './actions';
 
 interface MeResponse {
-  user:   { id: string; email: string; fullName: string; role: string };
+  user: { id: string; email: string; fullName: string; role: string };
   tenant: { id: string; name: string; slug: string; plan: string };
 }
 
@@ -27,8 +28,8 @@ async function fetchMe(): Promise<MeResponse | null> {
 }
 
 const ROLES: Record<string, string> = {
-  owner:   'Propietario',
-  admin:   'Administrador',
+  owner: 'Propietario',
+  admin: 'Administrador',
   manager: 'Encargado',
   cashier: 'Cajero',
 };
@@ -88,9 +89,15 @@ export default async function DashboardPage() {
           <CardHeader>
             <CardTitle className="text-base">Siguiente paso</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            La autenticacion funciona. En la Semana 3 se construye el modulo
-            de productos e inventario, y luego la pantalla del punto de venta.
+          <CardContent className="space-y-4 text-sm text-muted-foreground">
+            <p>
+              La autenticacion funciona. En la Semana 3 se construye el modulo
+              de productos e inventario, y luego la pantalla del punto de venta.
+            </p>
+
+            <Link href="/productos">
+              <Button>Ir a productos</Button>
+            </Link>
           </CardContent>
         </Card>
       </div>
